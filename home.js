@@ -33,3 +33,4 @@ const optionsButtons = document.querySelectorAll(".option-button");
         });
 
         document.getElementById("text-input").focus();
+        //wdwd wdwdwdwdwd
