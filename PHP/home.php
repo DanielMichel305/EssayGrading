@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Powered Essay Grading System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="./home.css">   
+    <link rel="stylesheet" href="../CSS/home.css">   
+    <link rel="stylesheet" href="../CSS/navbar.css"> 
 </head>
 <body>
-    <header>
-        <div class="logo">EssayGrader</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Signup</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+
+
+        <?php include 'navbar.php'; ?>
+
+   
 
 <!-- dwdwdwd sdsdsajdhjkajs w dwd-->
+ 
 
 
     <section class="hero">
+      <div class="sidebar">
+        <ul>
+            <li><a href="#">Certifications</a></li>
+            <li><a href="#">Your Progress</a></li>
+            <li><a href="#">Student Discussion</a></li>
+            <li><a href="#">Account</a></li>
+        </ul>
+    </div>
         <h1>Improve Your Writing with AI-Powered Feedback</h1>
         <div class="container">
-            <h1>Rich Text Editor Tool</h1>
+            <h1>Write your Essay Here:</h1>
             <div class="options">
                 <!-- Text Format -->
                 <button id="bold" class="option-button format">
@@ -147,6 +149,6 @@
         </div>
     </footer>
 
-    <script src="home.js"></script>
+    <script src="../JavaScrypt/home.js"></script>
 </body>
 </html>
