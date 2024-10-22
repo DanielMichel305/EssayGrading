@@ -1,6 +1,6 @@
 // Array of background image URLs
 const backgrounds = [
-    "url('https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg')", 
+    "url('https://images.unsplash.com/photo-1581447109200-bf2769116351?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHN0dWR5fGVufDB8fDB8fHww')", 
     "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqsUSNEFXN0s2Shn8CHZWsNbzqS5-ljKf1AA&s')", 
     "url('https://burst.shopifycdn.com/photos/wrtiting-tools.jpg?width=1000&format=pjpg&exif=0&iptc=0')", 
     "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqsUSNEFXN0s2Shn8CHZWsNbzqS5-ljKf1AA&s')"
