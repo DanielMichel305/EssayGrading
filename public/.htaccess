@@ -1,0 +1,11 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Allow access to existing files (CSS, JS, images, videos, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(css|js|images|videos)/ - [L]
+
+# Redirect all other requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
