@@ -10,6 +10,11 @@ body {
     line-height: 1.6;
     color: #fff;
     background-color: #121212; /* Dark mode background */
+    margin-bottom: 0; /* Remove bottom margin for the body */
+    overflow: hidden; 
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;/* Prevent any unwanted scrolling */
 }
 
 header {
@@ -25,27 +30,15 @@ header .logo {
     color: #9b59b6; /* Purple accent */
 }
 
-nav ul {
+ ul {
     list-style: none;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 20px;
-}
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: #9b59b6;
-}
 
 .hero {
+    margin-top: 65px;
     background: #1c1c1e;
     padding: 6rem 0;
     text-align: center;
@@ -55,13 +48,14 @@ nav ul li a:hover {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #9b59b6;
+    
 }
 
-.text-area-container {
+.textnav-area-container {
     margin: 20px auto;
     max-width: 800px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -114,15 +108,17 @@ textarea:focus {
 }
 
 .cta {
-    background: #9b59b6;
+    background: #9b59b6; /* Purple background */
     border: none;
     color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 10px 20px; /* Adjusted padding for better button size */
+    font-size: 1rem; /* Adjust font size */
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background 0.3s;
-    margin-top: 10px;
+    text-align: center; /* Center text */
+    white-space: nowrap; /* Prevent text wrapping */
+    min-width: 150px; /* Set a minimum width for the buttons */
 }
 
 .cta:hover {
@@ -130,10 +126,10 @@ textarea:focus {
 }
 
 footer {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 2rem 0;
+    padding: 20px;
+    background-color: #1e1e1e;
     text-align: center;
+    margin-top: 10; /* Ensure there is no top margin */
 }
 
 footer ul {
@@ -170,10 +166,7 @@ footer ul li a:hover {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
+   
 
     .hero h1 {
         font-size: 2rem;
@@ -184,7 +177,13 @@ footer ul li a:hover {
     }
 
     .cta {
-        font-size: 1rem;
+        width: 100%; /* Make buttons full width */
+        margin-bottom: 20px; /* Space between stacked buttons */
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+    .button-container {
+        flex-direction: column; /* Stack buttons on smaller screens */
+        align-items: center; /* Center buttons */
     }
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
@@ -197,7 +196,7 @@ footer ul li a:hover {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #121212; /* Dark background */
+    background-color: #1c1c1e; /* Dark background */
     color: #ffffff; /* White text */
 }
 
@@ -208,6 +207,10 @@ header {
     background-color: #1e1e1e;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 101; /* Ensure header is above the sidebar */
 }
 
 .logo {
@@ -216,19 +219,7 @@ header {
     color: #9b59b6; /* Purple color */
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-}
 
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-}
 
 .hero {
     padding: 50px 20px;
@@ -238,13 +229,12 @@ nav ul li a {
 .container {
     background-color: #1e1e1e; /* Darker container */
     max-width: 710px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto; /* Adjust margin to auto for centering */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    margin-top: 20px;
 }
+
 
 .container > h1 {
     font-size: 30px;
@@ -301,9 +291,13 @@ select {
 }
 /*wdwdwdwdw*/
 footer {
-    padding: 20px;
-    background-color: #1e1e1e;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
     text-align: center;
+    padding: 10px;
 }
 
 footer p, footer ul {
@@ -313,4 +307,40 @@ footer p, footer ul {
 .social-media a {
     margin: 0 10px;
     color: #ffffff;
+}
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px; /* Set it below the navigation bar */
+    width: 200px;
+    height: calc(100% - 60px); /* Reduce height to account for nav bar */
+    background-color: #1e1e1e;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: #9b59b6; /* Purple highlight effect */
+    background-color: #333; /* Slight background change on hover */
 }
