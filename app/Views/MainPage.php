@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="../CSS/navbar.css">
-    <link rel="stylesheet" href="../CSS/MainPage.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/MainPage.css">
 
 </head>
 <body>
@@ -28,5 +28,5 @@
     
 </body>
 
-    <script src="../JavaScrypt/MainPage.js"></script>
+    <script src="/js/MainPage.js"></script>
 </html>
