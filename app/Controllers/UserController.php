@@ -12,7 +12,7 @@ class userController{
 
     public function __construct()
     {
-        //session_destroy();
+        
         if(isset($_SESSION["UID"])){
             $this->UserModel = new UserModel($_SESSION["UID"]);
         }
