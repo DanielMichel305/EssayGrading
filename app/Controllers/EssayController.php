@@ -37,18 +37,26 @@ class essayController{
 
 
     public function create($EssayData){
-        $EssayData = json_decode($EssayData, true);
-        $this->EssayModel = new EssayModel($EssayData);
+        if(isset($_SESSION['UID'])){
+            $EssayData = json_decode($EssayData, true);
+            $this->EssayModel = new EssayModel($EssayData);
         if($this->EssayModel->SaveEssayData()){
             echo "Essay Upload Success!";
         }
         else{
             echo "Essay Couldn't Be Completed!";
         }
+        }
+        else{
+            echo htmlspecialchars("You need to login first!");
+        }
+        
     }
 
     public function myEssays(){
         //Needs to be protected resource!
+        //Basically mimics index with studentId as query 
+        //Can be Depricated
 
     }
 
