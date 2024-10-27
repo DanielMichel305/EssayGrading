@@ -9,8 +9,10 @@
 </head>
 <body>
 <header>
+<button id="sidebar-toggle" class="sidebar-toggle"><i class="fas fa-bars"></i></button>
         <div class="logo">EssayGrader</div>
         <nav>
+        
             <ul>
                 <li><a href="MainPage.php">Home</a></li>
                 <li><a href="About.php">About</a></li>
@@ -19,6 +21,7 @@
                 <li><a href="Register.php">Signup</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>
+            
         </nav>
     </header>
 </body>

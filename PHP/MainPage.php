@@ -23,6 +23,27 @@
         </div>
         </div>
     </div>
+<!-- Features Section -->
+<section class="features-section">
+        <div class="feature-container">
+            <div class="feature-box">
+                <h2>Plagiarism Detector</h2>
+                <p>Ensure originality in every essay with our AI-powered plagiarism detection tool that scans millions of sources to provide accurate results.</p>
+            </div>
+            <div class="feature-box">
+                <h2>Grammar Checker</h2>
+                <p>Improve your writing style and fix grammatical errors instantly with real-time feedback from our advanced grammar checker.</p>
+            </div>
+            <div class="feature-box">
+                <h2>Student Discussion</h2>
+                <p>Engage in thoughtful discussions with peers and exchange ideas to improve your understanding and essay quality.</p>
+            </div>
+            <div class="feature-box">
+                <h2>Personalized Feedback</h2>
+                <p>Receive detailed feedback tailored to your specific writing style and areas for improvement to help you excel in every assignment.</p>
+            </div>
+        </div>
+    </section>
 
 
     

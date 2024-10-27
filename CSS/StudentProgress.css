@@ -1,0 +1,371 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #121212; /* Dark mode background */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
+}
+
+header .logo {
+    font-size: 2.5vw; /* Relative to viewport width for responsiveness */
+    font-weight: bold;
+    color: #9b59b6; /* Purple accent */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 2vw; /* Relative margin */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2vw; /* Relative font size */
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #9b59b6;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 60px; /* Adjust this value to match your header height */
+    left: -250px; /* Start off-screen */
+    width: 250px;
+    height: calc(100% - 60px);
+    background-color: #1a1a1a;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+/* ... (keep other existing styles) ... */
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: #9b59b6; /* Purple highlight effect */
+    background-color: #333; /* Slight background change on hover */
+}
+
+
+/* Main Content Styles */
+main {
+    margin-left: 17vw; /* Adjust based on sidebar width */
+    padding: 3vw; /* Dynamic padding */
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.student-dashboard, .instructor-analytics {
+    background-color: #1e1e1e;
+    padding: 3vw; /* Dynamic padding */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5vw; /* Dynamic margin */
+    max-width: 90%; /* Ensure it doesn't exceed the viewport width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-size: 2.2vw; /* Dynamic heading size */
+    margin-bottom: 2vw; /* Adjust based on screen size */
+    color: #9b59b6; /* Purple accent */
+    text-align: center;
+}
+
+.progress-container, .analytics-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    justify-content: center;
+}
+
+.progress-item {
+    background-color: #2c2c2c;
+    padding: 2vw;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.progress-item:hover, .analytics-item:hover {
+    transform: translateY(-5px);
+}
+
+.welcome-message {
+    font-size: 1.2rem;
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 2vw;
+}
+
+.progress-bar {
+    background-color: #444;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    background-color: #9b59b6; /* Purple accent */
+    height: 20px;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+h2 {
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+p {
+    font-size: 1rem;
+    color: #ccc;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: #1e1e1e;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+footer p {
+    color: #9b59b6; /* Purple accent */
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    main {
+        margin-left: 20vw; /* Adjust for smaller screens */
+        padding: 2.5rem;
+    }
+
+    .progress-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .progress-item {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 20vw;
+    }
+
+    main {
+        margin-left: 22vw;
+        padding: 1.5rem;
+    }
+
+    header {
+        font-size: 1.6rem;
+    }
+
+    .progress-container {
+        flex-direction: column;
+    }
+
+    .progress-item {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 25vw;
+    }
+
+    main {
+        margin-left: 26vw;
+        padding: 1rem;
+    }
+
+    header .logo {
+        font-size: 1.4rem;
+    }
+
+    nav ul li {
+        margin: 0 5px;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+/* Achievements & Badges */
+.achievements {
+    background-color: #1e1e1e;
+    padding: 3vw;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5vw;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.badge-container {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    text-align: center;
+    color: #fff;
+    background-color: #2c2c2c;
+    padding: 1.5vw;
+    border-radius: 10px;
+    width: 150px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.badge-item:hover {
+    transform: translateY(-5px);
+}
+
+.badge-icon {
+    font-size: 3rem;
+    color: #9b59b6; /* Purple accent */
+    margin-bottom: 10px;
+}
+
+.badge-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.badge-description {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+/* Leaderboard */
+.leaderboard {
+    background-color: #1e1e1e;
+    padding: 3vw;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5vw;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.leaderboard-container {
+    text-align: center;
+    color: #fff;
+}
+
+.leaderboard-container ol {
+    list-style: none;
+    padding: 0;
+}
+
+.leaderboard-container li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Personalized Recommendations */
+.personalized-recommendations {
+    background-color: #1e1e1e;
+    padding: 3vw;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5vw;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.recommendations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.recommendation-item {
+    background-color: #2c2c2c;
+    padding: 2vw;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
