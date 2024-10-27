@@ -1,59 +1,81 @@
+// Toggle sidebar for mobile view
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+}
 
-let postId = 1;
+// Scroll to the post creation area
+function scrollToPost() {
+    document.getElementById('post-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 
+// Function to add post
 function addPost() {
-    const content = document.getElementById('post-content').value;
-    if (content === '') return;
-    
-    const feed = document.getElementById('feed');
-    
-    const post = document.createElement('div');
-    post.classList.add('post');
-    post.id = `post-${postId}`;
-    
-    // Initializing post content with like and comment button
-    post.innerHTML = `
-        <h3>Post #${postId}</h3>
-        <p>${content}</p>
-        <div class="actions">
-            <button onclick="likePost(${postId})">Like</button>
-            <span class="like-counter" id="like-counter-${postId}">0</span>
-            <button onclick="showComments(${postId})">Comment</button>
-        </div>
-        <div id="comments-${postId}" class="comment-section" style="display: none;">
-            <textarea id="comment-${postId}" placeholder="Write a comment..."></textarea>
-            <button onclick="addComment(${postId})">Add Comment</button>
-            <div id="comment-list-${postId}"></div>
-        </div>
-    `;
-    
-    feed.prepend(post);
-    
-    document.getElementById('post-content').value = ''; // Clear the input after posting
-    postId++; // Increment postId for unique posts
+    const postContent = document.getElementById('post-content').value;
+
+    if (postContent.trim()) {
+        const postList = document.getElementById('feed');
+        const postElement = document.createElement('div');
+        postElement.classList.add('post');
+
+        postElement.innerHTML = `
+            <h3>Anonymous User</h3>
+            <p>${postContent}</p>
+            <div class="actions">
+                <button class="like-button" onclick="likePost(this)">Like <span class="like-counter">0</span></button>
+                <button class="comment-button" onclick="toggleComment(this)">Comment <span class="comment-counter">0</span></button>
+            </div>
+            <div class="comment-section" style="display:none;">
+                <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                <button onclick="addComment(this)">Submit Comment</button>
+                <div class="comments-list"></div>
+            </div>
+        `;
+
+        postList.appendChild(postElement);
+
+        // Clear the post field after adding
+        document.getElementById('post-content').value = '';
+    } else {
+        alert('Please write something to post.');
+    }
 }
 
-function likePost(id) {
-    const likeCounter = document.getElementById(`like-counter-${id}`);
-    let currentLikes = parseInt(likeCounter.textContent, 10);
-    currentLikes++; // Increment like count
-    likeCounter.textContent = currentLikes; // Update like counter in UI
+// Like button functionality
+function likePost(button) {
+    const likeCounter = button.querySelector('.like-counter');
+    let likes = parseInt(likeCounter.innerText);
+    likes++;
+    likeCounter.innerText = likes;
 }
 
-function showComments(id) {
-    const commentSection = document.getElementById(`comments-${id}`);
+// Toggle comment section
+function toggleComment(button) {
+    const commentSection = button.parentElement.nextElementSibling;
     commentSection.style.display = commentSection.style.display === 'none' ? 'block' : 'none';
 }
 
-function addComment(id) {
-    const commentContent = document.getElementById(`comment-${id}`).value;
-    if (commentContent === '') return;
+// Add comment functionality
+function addComment(button) {
+    const commentInput = button.previousElementSibling;
+    const commentText = commentInput.value.trim();
 
-    const commentList = document.getElementById(`comment-list-${id}`);
-    const comment = document.createElement('p');
-    comment.textContent = commentContent;
-    commentList.appendChild(comment);
+    if (commentText) {
+        const commentsList = button.nextElementSibling;
+        const commentElement = document.createElement('div');
+        commentElement.classList.add('comment-box');
+        commentElement.innerText = commentText;
+        commentsList.appendChild(commentElement);
 
-    document.getElementById(`comment-${id}`).value = ''; // Clear the comment input
+        // Clear the comment input
+        commentInput.value = '';
+
+        // Update comment count
+        const commentCounter = button.closest('.post').querySelector('.comment-counter');
+        let commentsCount = parseInt(commentCounter.innerText);
+        commentsCount++;
+        commentCounter.innerText = commentsCount;
+    } else {
+        alert('Please write something to comment.');
+    }
 }
-
