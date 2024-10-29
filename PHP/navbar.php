@@ -25,4 +25,15 @@
         </nav>
     </header>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+        
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+        });
+
+</script>
 </html>

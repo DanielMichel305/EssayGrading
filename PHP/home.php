@@ -10,9 +10,7 @@
 </head>
 <body>
 
-   
-        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
-        <div class="logo">EssayGrader</div>
+  
         <?php include 'navbar.php'; ?>
   
 
@@ -27,7 +25,7 @@
         </div>
 
         <div class="container">
-    <button class="cta connect-instructor">Connect with Instructor</button>
+ 
     <h1>Write your Essay Here:</h1>
     <div class="options">
         <!-- Text Format -->
@@ -128,13 +126,46 @@
     <div id="text-input" contenteditable="true" placeholder="Start writing your essay..."></div>
     <div class="button-container">
         <button class="cta check-plagiarism">Submit For AI-powered Grading</button>
-        <button class="cta check-grammar">Connect With Instructor</button>
+        <button class="cta connect-instructor">Connect With Instructor</button>
     </div>
 </div>
             
     </section>
-    
+      <!-- Modal for connecting with instructor -->
+      <div id="connectInstructorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Connect with Instructor</h2>
+            <form>
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" name="studentName" required>
 
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" name="studentId" required>
+
+                <label for="instructorCode">Instructor Code:</label>
+                <input type="text" id="instructorCode" name="instructorCode" required>
+
+                <button type="submit" class="cta">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <p id="loadingMessage">Starting to check...</p>
+        </div>
+    </div>
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.querySelector('.sidebar');
+
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+        });
+</script>
 
     <script src="../JavaScrypt/home.js"></script>
     
