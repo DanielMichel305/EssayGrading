@@ -9,59 +9,63 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #fff;
-    background-color: #121212; /* Dark mode background */
+    background-color: #121212;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
 header {
     background: #1a1a1a;
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
 }
 
 header .logo {
-    font-size: 1.8rem;
+    font-size: 2.5vw; /* Relative to viewport width for responsiveness */
     font-weight: bold;
     color: #9b59b6; /* Purple accent */
 }
 
-nav ul {
+ ul {
     list-style: none;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 20px;
-}
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: #9b59b6;
-}
 
 .hero {
+    margin-top: 65px;
     background: #1c1c1e;
-    padding: 6rem 0;
+    padding: 2rem ;
     text-align: center;
+    flex-grow: 1;
+    display: flex;
+    padding: 2rem;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
+
 
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #9b59b6;
+    
 }
 
-.text-area-container {
+.textnav-area-container {
     margin: 20px auto;
     max-width: 800px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -114,15 +118,17 @@ textarea:focus {
 }
 
 .cta {
-    background: #9b59b6;
+    background: #9b59b6; /* Purple background */
     border: none;
     color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 10px 20px; /* Adjusted padding for better button size */
+    font-size: 1rem; /* Adjust font size */
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background 0.3s;
-    margin-top: 10px;
+    text-align: center; /* Center text */
+    white-space: nowrap; /* Prevent text wrapping */
+    min-width: 280px; /* Set a minimum width for the buttons */
 }
 
 .cta:hover {
@@ -130,13 +136,15 @@ textarea:focus {
 }
 
 footer {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 2rem 0;
+    padding: 20px;
+    background-color: #1e1e1e;
     text-align: center;
+    margin-top: 10; /* Ensure there is no top margin */
 }
 
 footer ul {
+    display: flex;
+    justify-content: center;
     list-style: none;
     padding: 0;
     margin: 1rem 0;
@@ -158,7 +166,7 @@ footer ul li a:hover {
 }
 
 .social-media a {
-    margin: 0 15px;
+    margin: 0 10px;
     color: #fff;
     text-decoration: none;
     transition: color 0.3s;
@@ -170,13 +178,15 @@ footer ul li a:hover {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    nav ul li {
-        display: block;
-        margin: 10px 0;
+    .hero {
+        padding: 1rem;
     }
 
     .hero h1 {
         font-size: 2rem;
+    }
+    .container {
+        padding: 1rem;
     }
 
     textarea {
@@ -184,7 +194,17 @@ footer ul li a:hover {
     }
 
     .cta {
-        font-size: 1rem;
+        width: 100%; /* Make buttons full width */
+        margin-bottom: 20px; /* Space between stacked buttons */
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+    .button-container {
+        flex-direction: column; /* Stack buttons on smaller screens */
+        align-items: center; /* Center buttons */
+    }
+    .button-container button {
+        width: 100%;
+        margin-bottom: 0.5rem;
     }
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
@@ -197,18 +217,11 @@ footer ul li a:hover {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #121212; /* Dark background */
+    background-color: #1c1c1e; /* Dark background */
     color: #ffffff; /* White text */
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1e1e1e;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
+
 
 .logo {
     font-size: 24px;
@@ -216,41 +229,44 @@ header {
     color: #9b59b6; /* Purple color */
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-}
 
-nav ul li {
-    margin-left: 20px;
-}
 
-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.hero {
-    padding: 50px 20px;
-    text-align: center;
-}
 
 .container {
-    background-color: #1e1e1e; /* Darker container */
-    max-width: 710px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 30px;
+    flex-grow: 1;
+    background-color: #1e1e1e;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .container > h1 {
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
     color: #9b59b6; /* Purple title */
+}
+.connect-instructor {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.connect-instructor:hover {
+    background-color: #0056b3;
 }
 
 .options {
@@ -272,6 +288,7 @@ button {
     color: #ffffff; /* White icon color */
 }
 
+
 button:hover {
     background-color: #4a4a4a; /* Button hover */
 }
@@ -287,23 +304,27 @@ select {
 }
 
 #text-input {
-    margin-top: 10px;
-    border: 1px solid #444; /* Dark border */
-    padding: 15px;
+    flex-grow: 1;
     min-height: 300px;
-    font-size: 16px;
-    background-color: #2c2c2c; /* Text area background */
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
     border-radius: 5px;
-    outline: none;
-    color: #ffffff; /* White text */
-    overflow-y: auto; /* Enable scrolling */
-    resize: none; /* Disable resizing */
+    color: #fff;
+    font-size: 1rem;
+    resize: vertical; /* Allow vertical resizing */
+    overflow-y: auto;
 }
-/*wdwdwdwdw*/
+
 footer {
-    padding: 20px;
     background-color: #1e1e1e;
+    padding: 1rem;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 footer p, footer ul {
@@ -313,4 +334,45 @@ footer p, footer ul {
 .social-media a {
     margin: 0 10px;
     color: #ffffff;
+}
+/* Sidebar Styles */
+/* Modify the existing .sidebar styles in your home.css */
+.sidebar {
+    position: fixed;
+    top: 60px; /* Adjust this value to match your header height */
+    left: -250px; /* Start off-screen */
+    width: 250px;
+    height: calc(100% - 60px);
+    background-color: #1a1a1a;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+/* ... (keep other existing styles) ... */
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: #9b59b6; /* Purple highlight effect */
+    background-color: #333; /* Slight background change on hover */
 }
