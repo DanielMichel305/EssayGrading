@@ -10,11 +10,11 @@
 </head>
 <body>
 
-    <header>
+   
         <button class="menu-toggle"><i class="fas fa-bars"></i></button>
         <div class="logo">EssayGrader</div>
         <?php include 'navbar.php'; ?>
-    </header>
+  
 
     <section class="hero">
         <div class="sidebar">
@@ -127,8 +127,8 @@
     </div>
     <div id="text-input" contenteditable="true" placeholder="Start writing your essay..."></div>
     <div class="button-container">
-        <button class="cta check-plagiarism">Check Plagiarism</button>
-        <button class="cta check-grammar">Check Grammar</button>
+        <button class="cta check-plagiarism">Submit For AI-powered Grading</button>
+        <button class="cta check-grammar">Connect With Instructor</button>
     </div>
 </div>
             

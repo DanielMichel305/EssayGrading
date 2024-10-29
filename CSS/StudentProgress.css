@@ -21,7 +21,7 @@ header {
     padding: 1.5rem 0;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
+    position: center;
     z-index: 10;
 }
 
@@ -97,10 +97,10 @@ nav ul li a:hover {
 
 /* Main Content Styles */
 main {
-    margin-left: 17vw; /* Adjust based on sidebar width */
+     /* Adjust based on sidebar width */
     padding: 3vw; /* Dynamic padding */
     flex: 1;
-    transition: margin-left 0.3s ease;
+ 
 }
 
 .student-dashboard, .instructor-analytics {
