@@ -1,73 +1,96 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+/* Container for the signup form */
+.signup-container {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures footer is at the bottom */
-    font-family: 'Poppins', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    line-height: 1.6;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
 }
 
-/* Container Styles */
-.container {
-    padding: 50px 20px;
-    flex: 1; /* Allows the container to grow and push footer down */
+/* Signup box styling */
+.signup-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
-/* Headings */
-h1 {
+.signup-box h1 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #9b59b6;
+}
+
+/* Form and input styling */
+.input-group {
     margin-bottom: 20px;
-}
-
-/* Form Styles */
-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    text-align: left;
 }
 
 label {
-    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #b0b0b0;
 }
 
 input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #444;
+    width: 100%;
+    padding: 12px;
+    border: none;
     border-radius: 5px;
     background-color: #2a2a2a;
     color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s;
 }
 
-/* Button Styles */
+input:focus {
+    background-color: #333;
+}
+
+/* Button styling */
 .cta {
-    padding: 10px 20px;
-    background-color: #9b59b6; /* Purple button */
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #9b59b6;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 .cta:hover {
-    background-color: #8e44ad; /* Darker purple on hover */
-    transform: translateY(-1px); /* Subtle lift */
+    background-color: #8e44ad;
+    transform: translateY(-2px);
+}
+
+/* Register text */
+.register-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.register-text a {
+    color: #9b59b6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.register-text a:hover {
+    color: #8e44ad;
 }
 
 /* Footer Styles */
 footer {
     text-align: center;
-    padding: 10px 0; /* Reduced padding */
-    background-color: #1e1e1e; /* Dark footer */
-    margin-top: auto; /* Pushes footer to the bottom */
+    padding: 10px 0;
+    background-color: #1e1e1e;
+    margin-top: auto;
 }
 
 footer ul {
@@ -77,19 +100,20 @@ footer ul {
 
 footer ul li {
     display: inline;
-    margin: 0 5px; /* Reduced margin between footer links */
+    margin: 0 5px;
 }
 
 footer ul li a {
-    color: #9b59b6; /* Purple links */
+    color: #9b59b6;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 footer ul li a:hover {
-    color: #8e44ad; /* Darker purple on hover */
+    color: #8e44ad;
 }
 
 footer p {
-    margin: 0; /* Remove bottom margin from the footer text */
+    margin: 0;
 }
+

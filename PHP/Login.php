@@ -11,19 +11,29 @@
 <body>
 <?php include 'navbar.php'; ?>
 
-    <section class="container">
-        <h1>Login to Your Account</h1>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <form>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
 
-            <button type="submit" class="cta">Login</button>
-        </form>
-        <p>Don't have an account? <a href="register.php">Sign up here</a>.</p>
-    </section>
+                <button type="submit" class="cta">Login</button>
+            </form>
+
+            <p class="reset-password">
+                <a href="reset_password.php">Forgot your password?</a>
+            </p>
+            <p class="register-text">Don’t have an account? <a href="Register.php">Sign up here</a>.</p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 EssayGrader. All rights reserved.</p>
@@ -32,7 +42,8 @@
             <li><a href="#">Terms of Service</a></li>
             <li><a href="#">FAQs</a></li>
         </ul>
-        
     </footer>
 </body>
 </html>
+
+

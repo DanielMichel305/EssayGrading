@@ -18,8 +18,8 @@
         <h1 class="main-heading">Grade Smarter, not Harder</h1>
         <p class="sub-heading">Streamline your essay feedback with precision and speed</p>
         <div class="button-container">
-            <a href="home.php" class="cta student">Sign Up as Student</a>
-            <a href="#" class="cta instructor">Sign Up as Instructor</a>
+            <a href="Register.php" class="cta student">Sign Up as Student</a>
+            <a href="Register.php" class="cta instructor">Sign Up as Instructor</a>
         </div>
         </div>
     </div>

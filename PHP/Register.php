@@ -11,22 +11,30 @@
 <body>
 <?php include 'navbar.php'; ?>
 
-    <section class="container">
-        <h1>Create an Account</h1>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+    <div class="signup-container">
+        <div class="signup-box">
+            <h1>Create an Account</h1>
+            <form>
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" minlength="7" required>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" minlength="7" required>
+                </div>
 
-            <button type="submit" class="cta">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="login.html">Login here</a>.</p>
-    </section>
+                <button type="submit" class="cta">Sign Up</button>
+            </form>
+            <p class="register-text">Already have an account? <a href="Login.php">Login here</a>.</p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 EssayGrader. All rights reserved.</p>
@@ -38,4 +46,5 @@
     </footer>
 </body>
 </html>
+
 
