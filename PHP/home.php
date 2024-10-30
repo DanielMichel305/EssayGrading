@@ -65,12 +65,7 @@
         </button>
 
         <!-- Link -->
-        <button id="createLink" class="option-button">
-            <i class="fas fa-link"></i>
-        </button>
-        <button id="unlink" class="option-button">
-            <i class="fas fa-unlink"></i>
-        </button>
+       
 
         <!-- Alignment -->
         <button id="justifyLeft" class="option-button align">
@@ -113,15 +108,7 @@
         </select>
 
         <!-- Font Name -->
-        <select id="fontName" class="option-button" style="width: 185px;">
-            <option value="Arial">Arial</option>
-            <option value="Verdana">Verdana</option>
-            <option value="Times New Roman">Times New Roman</option>
-            <option value="Garamond">Garamond</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Courier New">Courier New</option>
-            <option value="cursive">Cursive</option>
-        </select>
+      
     </div>
     <div id="text-input" contenteditable="true" placeholder="Start writing your essay..."></div>
     <div class="button-container">
