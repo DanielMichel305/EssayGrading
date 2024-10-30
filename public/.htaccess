@@ -1,11 +1,25 @@
 # Enable URL rewriting
 RewriteEngine On
 
+
+
 # Allow access to existing files (CSS, JS, images, videos, etc.)
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^(css|js|images|videos)/ - [L]
+
+
+
 
 # Redirect all other requests to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [L]
+
+
+<filesMatch "\.(html|htm|js|css)$">
+FileETag None
+Header unset ETag
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</filesMatch>

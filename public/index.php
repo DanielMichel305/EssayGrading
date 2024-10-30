@@ -15,6 +15,9 @@ $controllerName = !empty($URIsegments[0]) ? ucfirst($URIsegments[0]) . 'Controll
 
 $actionName = !empty($URIsegments[1]) ? $URIsegments[1] : 'index';
 
+$params = array_slice($URIsegments, 2);
+$queryParams = $_GET;
+
 
 $controllerClass = "App\\Controllers\\$controllerName";
 
@@ -23,6 +26,7 @@ if (class_exists($controllerClass)){
     
     if(method_exists($Controller,$actionName)){
         if ($requestMethod === 'POST') {
+            
             $data = file_get_contents("php://input");
             $Controller->$actionName($data);
         }
@@ -31,7 +35,7 @@ if (class_exists($controllerClass)){
             $Controller->$actionName($data);
         } 
         else {
-            $Controller->$actionName(); // For GET requests
+            $Controller->$actionName(params: $params,queryParams: $queryParams); // For GET requests
         }
     } 
     else {

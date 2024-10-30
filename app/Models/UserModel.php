@@ -131,6 +131,22 @@ class UserModel
         " Country: " . $this->Country . "<br>" ;
 
     }
+
+    public static function fetchUsers(){
+        global $conn;
+        $sql = "SELECT * from users";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        //$row = $result->fetch_assoc();
+        $rows = [];
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+        
+    }
     
 }
 

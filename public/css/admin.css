@@ -1,0 +1,57 @@
+h2{
+    position: relative;
+    transform: translate(17vw,13vh);
+}
+
+.content {
+    transform: translate(17vw,15vh);
+    
+}
+
+.user-table {
+   
+    position: absolute;
+    width: 80vw;
+    margin: auto;
+}
+
+.table-header, .user-row {
+    display: flex;
+    justify-content:space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+.user-row{
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Ensure it uses full available width */
+    padding: 5px;
+}
+.user-row span{
+    flex: 1; /* Allow each column to take an equal amount of space */
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: fit-content;
+    min-width: 100px; 
+    border-color: 3px #9b59b6;
+}
+
+.table-header {
+    font-weight: bold;
+    background-color: #9b59b6;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    width: fit-content;
+}
+
+
