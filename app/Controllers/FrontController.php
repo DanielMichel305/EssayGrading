@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 class FrontController {
 
-public function index(){
+public function index($params, $queryParams){
     require __DIR__ . "\\..\\views\\home.php";
 }
 

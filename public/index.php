@@ -26,6 +26,7 @@ if (class_exists($controllerClass)){
     
     if(method_exists($Controller,$actionName)){
         if ($requestMethod === 'POST') {
+            
             $data = file_get_contents("php://input");
             $Controller->$actionName($data);
         }

@@ -10,6 +10,14 @@ class userController{
     private $UserModel;
 
 
+    public function index($params, $queryParams){   ///Include more filtering options for complex queries
+        $users= UserModel::fetchUsers();
+        header('Content-Type: application/json');
+         http_response_code(200);
+         echo json_encode($users);
+
+    }
+
     public function __construct()
     {
         

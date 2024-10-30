@@ -40,7 +40,26 @@ class EssayModel {
      
     }
 
+
+    public static function FetchAllEssays(){
+        global $conn;
+        $sql = "SELECT * from essays";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        //$row = $result->fetch_assoc();
+        $rows = [];
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+        
+
+    }
+
     public static function FetchEssay($EssayID){
+
         global $conn;
         $sql = "SELECT * from essays Where EssayId = ?";
         $stmt = $conn->prepare($sql);
@@ -80,6 +99,16 @@ class EssayModel {
         
 
     }
+
+    public static function deleteEssay($EssayID){
+        global $conn;
+        $sql = "DELETE FROM essays Where EssayId = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $EssayID);
+        $stmt->execute();
+        $stmt->close();
+    }
+
 
     public function __construct($EssayData)
     {
