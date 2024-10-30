@@ -11,10 +11,11 @@
 
     <div class="sidebar">
         <ul>
-            <li><a href="#">Certifications</a></li>
+            <li><a href="home.php">Your dashboard</a></li>
+            <li><a href="certifications.php">Certifications</a></li>
             <li><a href="#">Your Progress</a></li>
-            <li><a href="#">Student Discussion</a></li>
-            <li><a href="#">Account</a></li>
+            <li><a href="discussion.php">Student Discussion</a></li>
+          
         </ul>
     </div>
 

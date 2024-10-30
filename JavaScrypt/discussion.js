@@ -18,19 +18,28 @@ function addPost() {
         const postElement = document.createElement('div');
         postElement.classList.add('post');
 
+
+        const timestamp = new Date().toLocaleString();
+
         postElement.innerHTML = `
-            <h3>Anonymous User</h3>
-            <p>${postContent}</p>
-            <div class="actions">
-                <button class="like-button" onclick="likePost(this)">Like <span class="like-counter">0</span></button>
-                <button class="comment-button" onclick="toggleComment(this)">Comment <span class="comment-counter">0</span></button>
-            </div>
-            <div class="comment-section" style="display:none;">
-                <textarea class="comment-input" placeholder="Write a comment..."></textarea>
-                <button onclick="addComment(this)">Submit Comment</button>
-                <div class="comments-list"></div>
-            </div>
-        `;
+    <h3>Anonymous User</h3>
+    <p>${postContent}</p>
+    <div class="post-timestamp">${timestamp}</div>
+    <div class="actions">
+        <button class="like-button" onclick="likePost(this)">
+            <i class="fas fa-thumbs-up"></i> Like <span class="like-counter">0</span>
+        </button>
+        <button class="comment-button" onclick="toggleComment(this)">
+            <i class="fas fa-comment-alt"></i> Comment <span class="comment-counter">0</span>
+        </button>
+    </div>
+    <div class="comment-section" style="display:none;">
+        <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+        <button onclick="addComment(this)">Submit Comment</button>
+        <div class="comments-list"></div>
+    </div>
+`;
+
 
         postList.appendChild(postElement);
 
@@ -64,7 +73,18 @@ function addComment(button) {
         const commentsList = button.nextElementSibling;
         const commentElement = document.createElement('div');
         commentElement.classList.add('comment-box');
-        commentElement.innerText = commentText;
+
+        // Current time for timestamp
+        const timestamp = new Date().toLocaleString();
+
+        commentElement.innerHTML = `
+            <div class="user-icon">A</div> <!-- Placeholder for user icon -->
+            <div class="comment-content">
+                <p>${commentText}</p>
+                <span class="timestamp">${timestamp}</span>
+            </div>
+        `;
+
         commentsList.appendChild(commentElement);
 
         // Clear the comment input
@@ -79,3 +99,4 @@ function addComment(button) {
         alert('Please write something to comment.');
     }
 }
+

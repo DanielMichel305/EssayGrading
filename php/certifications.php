@@ -11,10 +11,22 @@ $currentDate = date("Y-m-d"); // Get current date for the certificate
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Progress</title>
-    <link rel="stylesheet" href="../css/certifications.css">
+    <link rel="stylesheet" href="../CSS/certifications.css">
+    <link rel="stylesheet" href="../CSS/navbar.css">
+    <link rel="stylesheet" href="../CSS/StudentProgress.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
+<?php include 'navbar.php';?>
+<div class="sidebar">
+        <ul>
+            <li><a href="home.php">Your dashboard</a></li>
+            <li><a href="#">Certifications</a></li>
+            <li><a href="StudentProgress.php">Your Progress</a></li>
+            <li><a href="discussion.php">Student Discussion</a></li>
+           
+        </ul>
+    </div>
 <body>
     <div class="container">
         <h1 class="page-title">Certification</h1>
@@ -46,7 +58,16 @@ $currentDate = date("Y-m-d"); // Get current date for the certificate
             </div>
         </div>
     </div>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.querySelector('.sidebar');
 
-    <script src="../js/certifications.js"></script>
-</body>
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+        });
+    </script>
+    <script src="../JavaScrypt/certifications.js"></script>
+    
 </html>

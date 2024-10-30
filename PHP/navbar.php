@@ -15,11 +15,10 @@
         
             <ul>
                 <li><a href="MainPage.php">Home</a></li>
-                <li><a href="About.php">About</a></li>
-                <li><a href="Features.php">Features</a></li>
+              
                 <li><a href="Login.php">Login</a></li>
                 <li><a href="Register.php">Signup</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                
             </ul>
             
         </nav>
