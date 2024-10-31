@@ -16,7 +16,7 @@
         <div class="sidebar">
             <div class="logo">Student Discussion</div>
             <ul>
-                <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/app/views/home.php"><i class="fas fa-home"></i> Home</a></li>
                <!-- <li><a href="#"><i class="fas fa-user"></i> Profile</a></li> -->
               <!--  <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li> -->
             </ul>
