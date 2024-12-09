@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discussion Feed - Reddit Style</title>
-    <link rel="stylesheet" href="discussion.css">
+    <title>Discussion Feed</title>
+    <link rel="stylesheet" href="../css/discussion.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -33,7 +33,16 @@
                 
                 <!-- Posts feed -->
                 <div id="feed" class="feed-list">
-                    <!-- Posts will be dynamically added here -->
+                    <?php
+                    // Example of dynamically adding posts
+                    // You can fetch posts from a database and display them here
+                    // Assuming you have an array of posts
+                    $posts = []; // This should be fetched from your database
+
+                    foreach ($posts as $post) {
+                        echo '<div class="post">' . htmlspecialchars($post['content']) . '</div>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -41,9 +50,10 @@
 
     <!-- Floating Action Button for New Post -->
     <div class="fab" onclick="scrollToPost()">
-        <i class="fas fa-plus"></i><span> New Post</span>
+        <i class="fas fa-plus"></i>
+        <span> New Post</span>
     </div>
 
-    <script src="discussion.js"></script>
+    <script src="../js/discussion.js"></script>
 </body>
 </html>
