@@ -36,6 +36,8 @@ body {
     justify-content: space-between;
 }
 
+/* ---------- Sidebar Logo Styling ---------- */
+/* Styles the sidebar title/logo with font size, color, and spacing */
 .sidebar .logo {
     font-size: 24px;
     color: #d7dadc;
@@ -43,6 +45,8 @@ body {
     font-weight: bold;
 }
 
+/* ---------- Sidebar Links ---------- */
+/* Styles sidebar list items and links with icons and hover effect */
 .sidebar ul {
     list-style: none;
     padding: 0;
