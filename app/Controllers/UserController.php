@@ -107,6 +107,9 @@ class userController{
 /*
 To be Done For next Time:
 -UpdateUserInfo Function needs improvements as it's a security risk (users can change other users data) IT'S NOT...idk 
+        This Wont be a security risk unless a User messes with Session data changing the UID in his current session
+        So Secure Sessions uing HTTP and JWT is CRUTIAL
+        
 -keep refactoring code for other routes/functionalities 
 -userController myAccount() lacks a lot of features that require the essayController
 -Start on the Forums

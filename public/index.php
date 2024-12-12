@@ -12,7 +12,8 @@ $router= new Router();
 
 $router->mount('/auth', function () use($router) {
     $user = new userController();
-    $authRouter = new authRouter($user);
+    $authRouter = new authRouter($user);        
+    
     $authRouter->mountRouter($router);
 });
 
