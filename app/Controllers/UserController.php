@@ -27,12 +27,14 @@ class userController{
     }
 
     public function myAccount(){
-        if(isset($_SESSION["UID"])){
-            require __DIR__  . "\\..\\Views\\AccountDetail.php";
-            echo $this->UserModel->__toString();
+        if(!isset($_SESSION["UID"])){
+            //echo "Please login and try again!";///change this to redirect to login page
+            header("Location: /auth/login");
         }
         else{
-            echo "Please login and try again!";///change this to redirect to login page
+            require_once __DIR__  . "\\..\\Views\\AccountDetail.php";
+            echo $this->UserModel->__toString();
+            echo "->>" .  $_SESSION["UID"];
         }
         
     }
@@ -49,10 +51,24 @@ class userController{
        
     }
 
-    public function updateInfo($userData){
-        $userData = json_decode($userData, true);
-        $this->UserModel->updateUserData($userData);
-        echo "UserData updated ! ";
+    public function updateInfo($userData){      //add authentication to allow user to only change their Data and no one else's data 
+        if(!isset($_SESSION["UID"])){       //////We need to add funtion isLoggedIn()
+            header("Content-Type: application/json");
+            echo json_encode(["message" => "Failed to update User Data, Try Again later!"]);
+        }
+        else{
+            $userData = json_decode($userData, true);
+            if($userData['UID'] == $_SESSION["UID"]){
+                $this->UserModel->updateUserData($userData);
+                echo "UserData updated ! ";
+            }
+            else {
+                http_response_code(401);
+                echo "UNAUTHORIZED!";
+            }
+            
+        }
+       
 
     }
     public function logout(){
@@ -65,16 +81,38 @@ class userController{
        
     }
 
-    public function login($userData){
+    public function login($userData){           //NEEDS ALOT OF IMPROVEMENT IN ERROR HANDLING   
         $userData = json_decode($userData,true);
-        $userID = UserModel::login($userData['Username'], $userData['Password']);
-        $this->UserModel = new UserModel($userID);
-        $_SESSION["Username"] = $this->UserModel->Username;
-        $_SESSION["UID"] = $this->UserModel->UID;
-        echo $userID . "  -  " . $this->UserModel->Username;
+
+        $userId = UserModel::login($userData['Username'], $userData['Password']);
+        if($userId){
+            $this->UserModel = new UserModel($userId);
+            $_SESSION["Username"] = $this->UserModel->Username;
+            $_SESSION["UID"] = $this->UserModel->UID;
+            http_response_code(200);
+            echo  json_encode(["message" => "Login Success"]);
+        }
+        else{
+            http_response_code(400);
+            echo json_encode(["message" => "Username or password incorrect, Try Again!"]);
+        }
+        
+        
+        
         
     }
 
 }
+
+/*
+To be Done For next Time:
+-UpdateUserInfo Function needs improvements as it's a security risk (users can change other users data) IT'S NOT...idk 
+-keep refactoring code for other routes/functionalities 
+-userController myAccount() lacks a lot of features that require the essayController
+-Start on the Forums
+-user Sessions, cookies and IP based white/black listing
+- reinclude admin dashboard code
+
+*/ 
 
 ?>

@@ -9,6 +9,7 @@
     <?php 
    
     echo "<h1> Welcome, " . $_SESSION["Username"] . "<br></h1>";
+    
     ?>
     
 </body>
