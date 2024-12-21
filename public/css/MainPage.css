@@ -8,27 +8,24 @@
 body {
     font-family: 'Arial', sans-serif;
     color: #fff;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image 1s ease-in-out;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: block;
 }
 
 /* Full-page overlay */
 .overlay {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 60px 0; /* Adjusted for visual spacing */
 }
 
 /* Centered content */
@@ -62,22 +59,78 @@ body {
     gap: 40px;
 }
 
-/* Elegant, transparent buttons */
+/* Call to Action Buttons */
 .cta {
     text-decoration: none;
     color: white;
     padding: 15px 40px;
-    border-radius: 50px; /* Rounded buttons */
+    border-radius: 50px;
     font-size: 1.5rem;
     background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
     transition: background-color 0.3s ease, color 0.3s ease;
-    border: none; /* No border */
-    backdrop-filter: blur(5px); /* Elegant blur effect */
+    border: none;
+    backdrop-filter: blur(5px);
     letter-spacing: 1px;
     cursor: pointer;
 }
-/* Hover effect */
+
 .cta:hover {
     background-color: rgba(255, 255, 255, 0.3);
-    color: #9b59b6; /* Purple text on hover */
+    color: #9b59b6;
+}
+
+/* Features Section */
+.features-section {
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Background for the features section */
+    color: white;
+    display: block;
+    width: 100%;
+}
+
+.feature-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.feature-box {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4); /* Slightly darker transparent background */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.feature-box:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+    color: #9b59b6; /* Purple accent on hover */
+}
+
+.feature-box h2 {
+    font-size: 2rem;
+    color: #9b59b6;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
 }

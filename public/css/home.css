@@ -9,23 +9,27 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #fff;
-    background-color: #121212; /* Dark mode background */
-    margin-bottom: 0; /* Remove bottom margin for the body */
-    overflow: hidden; 
+    background-color: #121212;
     min-height: 100vh;
     margin: 0;
-    padding: 0;/* Prevent any unwanted scrolling */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
 header {
     background: #1a1a1a;
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
 }
 
 header .logo {
-    font-size: 1.8rem;
+    font-size: 2.5vw; /* Relative to viewport width for responsiveness */
     font-weight: bold;
     color: #9b59b6; /* Purple accent */
 }
@@ -40,9 +44,15 @@ header .logo {
 .hero {
     margin-top: 65px;
     background: #1c1c1e;
-    padding: 6rem 0;
+    padding: 2rem ;
     text-align: center;
+    flex-grow: 1;
+    display: flex;
+    padding: 2rem;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
+
 
 .hero h1 {
     font-size: 2.5rem;
@@ -118,8 +128,9 @@ textarea:focus {
     transition: background 0.3s;
     text-align: center; /* Center text */
     white-space: nowrap; /* Prevent text wrapping */
-    min-width: 150px; /* Set a minimum width for the buttons */
+    min-width: 280px; /* Set a minimum width for the buttons */
 }
+
 
 .cta:hover {
     background: #8e44ad;
@@ -133,6 +144,8 @@ footer {
 }
 
 footer ul {
+    display: flex;
+    justify-content: center;
     list-style: none;
     padding: 0;
     margin: 1rem 0;
@@ -154,7 +167,7 @@ footer ul li a:hover {
 }
 
 .social-media a {
-    margin: 0 15px;
+    margin: 0 10px;
     color: #fff;
     text-decoration: none;
     transition: color 0.3s;
@@ -166,10 +179,15 @@ footer ul li a:hover {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-   
+    .hero {
+        padding: 1rem;
+    }
 
     .hero h1 {
         font-size: 2rem;
+    }
+    .container {
+        padding: 1rem;
     }
 
     textarea {
@@ -184,6 +202,10 @@ footer ul li a:hover {
     .button-container {
         flex-direction: column; /* Stack buttons on smaller screens */
         align-items: center; /* Center buttons */
+    }
+    .button-container button {
+        width: 100%;
+        margin-bottom: 0.5rem;
     }
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
@@ -200,18 +222,7 @@ body {
     color: #ffffff; /* White text */
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1e1e1e;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 101; /* Ensure header is above the sidebar */
-}
+
 
 .logo {
     font-size: 24px;
@@ -221,18 +232,17 @@ header {
 
 
 
-.hero {
-    padding: 50px 20px;
-    text-align: center;
-}
 
 .container {
-    background-color: #1e1e1e; /* Darker container */
-    max-width: 710px;
-    margin: 20px auto; /* Adjust margin to auto for centering */
-    padding: 30px;
+    flex-grow: 1;
+    background-color: #1e1e1e;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -242,6 +252,7 @@ header {
     margin-bottom: 20px;
     color: #9b59b6; /* Purple title */
 }
+
 
 .options {
     display: flex;
@@ -262,6 +273,7 @@ button {
     color: #ffffff; /* White icon color */
 }
 
+
 button:hover {
     background-color: #4a4a4a; /* Button hover */
 }
@@ -277,27 +289,27 @@ select {
 }
 
 #text-input {
-    margin-top: 10px;
-    border: 1px solid #444; /* Dark border */
-    padding: 15px;
+    flex-grow: 1;
     min-height: 300px;
-    font-size: 16px;
-    background-color: #2c2c2c; /* Text area background */
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
     border-radius: 5px;
-    outline: none;
-    color: #ffffff; /* White text */
-    overflow-y: auto; /* Enable scrolling */
-    resize: none; /* Disable resizing */
+    color: #fff;
+    font-size: 1rem;
+    resize: vertical; /* Allow vertical resizing */
+    overflow-y: auto;
 }
-/*wdwdwdwdw*/
+
 footer {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
+    z-index: 100;
 }
 
 footer p, footer ul {
@@ -309,18 +321,23 @@ footer p, footer ul {
     color: #ffffff;
 }
 /* Sidebar Styles */
+/* Modify the existing .sidebar styles in your home.css */
 .sidebar {
     position: fixed;
-    left: 0;
-    top: 60px; /* Set it below the navigation bar */
-    width: 200px;
-    height: calc(100% - 60px); /* Reduce height to account for nav bar */
-    background-color: #1e1e1e;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    z-index: 100;
-
+    top: 60px; /* Adjust this value to match your header height */
+    left: -250px; /* Start off-screen */
+    width: 250px;
+    height: calc(100% - 60px);
+    background-color: #1a1a1a;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
 }
+
+.sidebar.active {
+    left: 0;
+}
+
+/* ... (keep other existing styles) ... */
 
 .sidebar ul {
     list-style-type: none;
@@ -343,4 +360,55 @@ footer p, footer ul {
 .sidebar ul li a:hover {
     color: #9b59b6; /* Purple highlight effect */
     background-color: #333; /* Slight background change on hover */
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #1c1c1e;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    color: #fff;
+    border-radius: 10px;
+}
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #9b59b6;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }

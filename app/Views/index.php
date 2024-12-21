@@ -77,6 +77,6 @@
         </ul>
     </footer>
 
-    <script src="home.js"></script>
+    <script src="/js/home.js"></script>
 </body>
 </html>

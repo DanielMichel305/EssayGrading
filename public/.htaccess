@@ -11,6 +11,7 @@ RewriteRule ^(css|js|images|videos)/ - [L]
 
 
 # Redirect all other requests to index.php
+#RewriteBase /public
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [L]
