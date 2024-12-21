@@ -11,7 +11,8 @@
     <div class="container">
         <!-- Sidebar Toggle Button for Mobile -->
         <button class="toggle-sidebar" onclick="toggleSidebar()">☰</button>
-
+        
+        
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">Student Discussion</div>

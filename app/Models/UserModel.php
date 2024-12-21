@@ -23,6 +23,16 @@ class UserModel
         $bytes = random_bytes(7);
         return bin2hex($bytes);
     }
+    public static function getUsernameUID($username){
+        global $conn;
+        $stmt=$conn->prepare('SELECT UID from users where Username = ?');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $UID = $stmt->get_result();
+        $UID = $UID->fetch_assoc();
+        $stmt->close();
+        return $UID["UID"];
+    }
 
     public function __construct($UID) {
         global $conn;

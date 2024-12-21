@@ -2,8 +2,12 @@
 require __DIR__ . '\\..\\vendor\\autoload.php';
 require __DIR__ . '\\..\\DB\\database.inc.php';
 
+use App\Controllers\essayController;
+use App\Controllers\ForumController;
 use App\Controllers\userController;
 use App\Routers\authRouter;
+use App\Routers\essayRouter;
+use App\Routers\ForumRouter;
 use App\Routers\userRouter;
 use Bramus\Router\Router;
 
@@ -22,6 +26,17 @@ $router->mount('/users', function() use ($router){
     $userRouter = new userRouter($user);
     $userRouter->mountRouter($router);
 
+});
+$router->mount('/forums', function () use ($router){
+    $forumController = new ForumController();
+    $forumRouter = new ForumRouter($forumController);
+    $forumRouter->mountRouter($router);
+    
+});
+$router->mount('/essay', function () use ($router){
+    $essayController = new essayController();
+    $essayRouter = new essayRouter($essayController);
+    $essayRouter->mountRouter($router);
 });
 
 //Include Leaderboard
