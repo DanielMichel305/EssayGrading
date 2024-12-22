@@ -1,0 +1,129 @@
+/* Container for the login form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+/* Login box styling */
+.login-box {
+    margin-top: 70px;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #9b59b6;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+input:focus {
+    background-color: #333;
+}
+
+.cta {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #9b59b6;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta:hover {
+    background-color: #8e44ad;
+    transform: translateY(-2px);
+}
+
+.register-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.register-text a {
+    color: #9b59b6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.register-text a:hover {
+    color: #8e44ad;
+}
+footer {
+    text-align: center;
+    padding: 10px 0; /* Reduced padding */
+    background-color: #1e1e1e; /* Dark footer */
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 5px; /* Reduced margin between footer links */
+}
+
+footer ul li a {
+    color: #9b59b6; /* Purple links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer ul li a:hover {
+    color: #8e44ad; /* Darker purple on hover */
+}
+
+footer p {
+    margin: 0; /* Remove bottom margin from the footer text */
+}
+
+.reset-password {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.reset-password a {
+    color: #9b59b6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.reset-password a:hover {
+    color: #8e44ad;
+}

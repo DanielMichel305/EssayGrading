@@ -1,0 +1,91 @@
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #9b59b6;
+}
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #9b59b6; /* Purple accent */
+}
+
+ ul {
+    list-style: none;
+    padding: 0;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 101; /* Ensure header is above the sidebar */
+}
+/* Add this to your existing navbar.css */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 20px; /* Add some space between the button and the logo */
+    order: -1; /* This will move the button to the left side */
+}
+
+.sidebar-toggle:hover {
+    color: #9b59b6;
+}
+
+/* Adjust the nav layout */
+nav {
+    display: flex;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    margin-right: auto; /* This will push the logo to the right */
+}
