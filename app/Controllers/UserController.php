@@ -71,35 +71,37 @@ class userController{
        
 
     }
-    public function login($userData) {
-        // Decode JSON if using API calls, or use $_POST directly for form submissions
-        if (is_string($userData)) {
-            $userData = json_decode($userData, true);
-        }
+    public function logout(){
+        session_destroy();
+        echo "Logout success and session destoryed";
+    }
+    public function create($userData){
+        $userData = json_decode($userData, true);
+        UserModel::signUp($userData);
+       
+    }
 
-        $username = $userData['email'] ?? ''; // Adjust key to match form field name
-        $password = $userData['password'] ?? '';
+    public function login($userData){           //NEEDS ALOT OF IMPROVEMENT IN ERROR HANDLING   
+        $userData = json_decode($userData,true);
 
-        if (empty($username) || empty($password)) {
-            http_response_code(400);
-            echo json_encode(["message" => "Username and Password are required!"]);
-            return;
-        }
-
-        $userId = UserModel::login($username, $password);
-        if ($userId) {
+        $userId = UserModel::login($userData['Username'], $userData['Password']);
+        if($userId){
             $this->UserModel = new UserModel($userId);
-            session_start();
             $_SESSION["Username"] = $this->UserModel->Username;
             $_SESSION["UID"] = $this->UserModel->UID;
-
             http_response_code(200);
-            echo json_encode(["message" => "Login Success"]);
-        } else {
-            http_response_code(401);
-            echo json_encode(["message" => "Invalid Username or Password!"]);
+            echo  json_encode(["message" => "Login Success"]);
         }
+        else{
+            http_response_code(400);
+            echo json_encode(["message" => "Username or password incorrect, Try Again!"]);
+        }
+        
+        
+        
+        
     }
+
 }
 
 /*

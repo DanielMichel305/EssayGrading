@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Powered Essay Grading System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/navbar.css">   
+    <link rel="stylesheet" href="/css/navbar.css">   
 </head>
 <body>
 <header>
@@ -14,10 +14,10 @@
         <nav>
         
             <ul>
-                <li><a href="MainPage.php">Home</a></li>
+                <li><a href="/app/views/MainPage.php">Home</a></li>
               
-                <li><a href="Login.php">Login</a></li>
-                <li><a href="Register.php">Signup</a></li>
+                <li><a href="/app/views/Login.php">Login</a></li>
+                <li><a href="/app/views/Register.php">Signup</a></li>
                 
             </ul>
             

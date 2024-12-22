@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - EssayGrader</title>
+    <title>Features - EssayGrader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/base.css">
-    <link rel="stylesheet" href="../CSS/navbar.css">
-
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/features.css">
 </head>
 <body>
-    
 <?php include 'navbar.php'; ?>
 
-
     <section class="container">
-        <h1>About EssayGrader</h1>
-        <p>EssayGrader is an AI-powered platform designed to help students and writers improve their writing skills through constructive feedback and advanced analytics.</p>
-        <p>Our mission is to empower individuals to express their thoughts clearly and effectively.</p>
+        <h1>Features of EssayGrader</h1>
+        <ul>
+            <li>AI-powered essay evaluation and feedback</li>
+            <li>Plagiarism detection</li>
+            <li>Grammar and spell checking</li>
+            <li>Rich text editor with formatting options</li>
+            <li>User-friendly interface</li>
+        </ul>
     </section>
 
     <footer>
@@ -27,7 +29,7 @@
             <li><a href="#">Terms of Service</a></li>
             <li><a href="#">FAQs</a></li>
         </ul>
-      
+        
     </footer>
 </body>
 </html>
