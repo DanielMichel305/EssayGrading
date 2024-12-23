@@ -1,7 +1,8 @@
 <?php
 namespace App\Models;
+use App\DB\DatabaseHandler;
 
-require_once __DIR__ . "\\..\\..\\DB\\database.inc.php";
+//require_once __DIR__ . "\\..\\..\\DB\\database.inc.php";
 
 class EssayModel {
     private $EssayId;
@@ -32,7 +33,8 @@ class EssayModel {
 
 
     public function create(){
-        global $conn;
+        
+        $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();
         $sql = "INSERT into essays (EssayId, EssayLanguage, StudentId, EssayScore, PlagirismScore, LetterGrade, GradedBy) VALUES (?,?,?,?,?,?,?)";
         if($stmt = $conn->prepare($sql)){
             $stmt->bind_param('sssiiss', $this->EssayId, $this->EssayLanguage,$this->StudentId, $this->EssayScore, $this->plagirismScore,$this->LetterGrade,$this->GradedBy);
@@ -52,7 +54,7 @@ class EssayModel {
 
 
     public function save(){ ////ERORRRR HANDLING
-        global $conn;
+        $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();
         $query = "UPDATE essays WHERE EssayId = ? SET EssayLanguage = ?, EssayScore = ?, PlagirismScore = ?, LetterGrade = ?, GradedBy = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('ssiiss',
@@ -70,7 +72,7 @@ class EssayModel {
 
 
     public static function getFilteredEssays($queryFilters){        /////DON'T Forget Error Handling
-        global $conn;
+        $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();
         $query = "SELECT * FROM essays WHERE 1=1 ";
         $filterTypes="";
         $params = [];
@@ -103,7 +105,7 @@ class EssayModel {
 
 
     public static function FetchAllEssays(){
-        global $conn;
+        $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();
         $sql = "SELECT * from essays";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -121,7 +123,7 @@ class EssayModel {
 
     public static function FetchEssay($EssayID){
 
-        global $conn;
+        $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();
         $sql = "SELECT * from essays Where EssayId = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s', $EssayID);
@@ -145,7 +147,7 @@ class EssayModel {
     }
 
     public static function FetchUserEssay($StudentID){
-        global $conn;
+        $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();
         $sql = "SELECT * from essays Where StudentId = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s', $StudentID);
@@ -163,7 +165,7 @@ class EssayModel {
     }
 
     public static function delete($EssayID){
-        global $conn;
+        $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();
         $sql = "DELETE FROM essays Where EssayId = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s', $EssayID);
@@ -174,7 +176,7 @@ class EssayModel {
 
     public function __construct($EssayData, $essayId = null)           ///This is just a crude way to be able to return new EssayModel that already exists
     {
-        //global $conn;
+        // $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $this->StudentId = $EssayData['StudentId'];
         $this->EssayLanguage = $EssayData['EssayLanguage'];
         $this->EssayId = $essayId ?? EssayModel::CreateEssayID($this->StudentId, $this->EssayLanguage);

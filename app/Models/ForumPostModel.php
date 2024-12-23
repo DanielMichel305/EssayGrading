@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-
+use App\DB\DatabaseHandler;
 use DateTime;
 
 class ForumPostModel {
@@ -24,12 +24,12 @@ class ForumPostModel {
 
     }
     public function fetchPostbyID($post_id){        ////THIS WON'T WORK CHANGE FROM PDO TO MYSQLI
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
 
         $stmt = $conn->prepare("SELECT * from forum_posts where post_id = :post_id");
         $stmt->execute([":post_id"=>$post_id]);
 
-        $result = $stmt->get_results();
+        $result = $stmt->get_result();
         $post = $result->fetch_assoc();
         $stmt->close();
 
@@ -37,7 +37,7 @@ class ForumPostModel {
     }
     
     public static function getThreadPosts($threadId){
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $stmt= $conn->prepare("SELECT * FROM forum_posts where thread_id = ?");
         $stmt->bind_param('s', $threadId);
         $stmt->execute();
@@ -48,10 +48,10 @@ class ForumPostModel {
     }
 
     public function create(){   //This would be changed to private and just provide the abstract save function
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $query = "INSERT into forum_posts (post_id, created_at, thread_id, author_uid,upvotes,post_text) VALUES (?,?,?,?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_stmt("ssssss",
+        $stmt->bind_param("ssssss",
             $this->postId,
             $this->createdAt,
             $this->threadID,

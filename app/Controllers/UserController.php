@@ -4,7 +4,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 
 //require_once __DIR__ ."\\..\\Models\\UserModel.php";
-session_start();
+
 class userController{
 
     private $UserModel;
@@ -72,8 +72,10 @@ class userController{
 
     }
     public function logout(){
+        session_unset();
         session_destroy();
-        echo "Logout success and session destoryed";
+        setcookie(session_name(), '', time() - 3600, '/');
+        //echo "Logout success and session destoryed";
     }
     public function create($userData){
         $userData = json_decode($userData, true);
@@ -87,8 +89,11 @@ class userController{
         $userId = UserModel::login($userData['Username'], $userData['Password']);
         if($userId){
             $this->UserModel = new UserModel($userId);
+            session_regenerate_id(true);
             $_SESSION["Username"] = $this->UserModel->Username;
             $_SESSION["UID"] = $this->UserModel->UID;
+            $_SESSION["userRole"] = $this->UserModel->getUserRole();
+            $_SESSION["user_ip"] = $_SERVER["REMOTE_ADDR"];  
             http_response_code(200);
             echo  json_encode(["message" => "Login Success"]);
         }

@@ -2,6 +2,7 @@
 require __DIR__ . '\\..\\vendor\\autoload.php';
 require __DIR__ . '\\..\\DB\\database.inc.php';
 
+use App\Controllers\authController;
 use App\Controllers\essayController;
 use App\Controllers\ForumController;
 use App\Controllers\userController;
@@ -13,6 +14,13 @@ use Bramus\Router\Router;
 
 $router= new Router();
 
+
+$router->before('GET|POST|PUT|DELETE' , '/users/.*', function(){
+    if(!authController::isLoggedIn()){
+        header("location: /public/auth/login");
+        exit();
+    }
+});
 
 $router->mount('/auth', function () use($router) {
     $user = new userController();
@@ -39,12 +47,23 @@ $router->mount('/essay', function () use ($router){
     $essayRouter->mountRouter($router);
 });
 
+
+$router->mount('/admin', function () use ($router){
+    ///admin stuff 
+
+});
+
 //Include Leaderboard
 
 $router->get('/', function(){
 
     echo "HEYY";
 
+});
+
+$router->set404(function(){     ///Include a 404 Page
+    header('HTTP/1.1 404 Not Found');
+    echo "<h2>404, Not found :(</h2>";
 });
 
 $router->run();

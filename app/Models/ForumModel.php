@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-
+use App\DB\DatabaseHandler;
 use Exception;
 
 require_once __DIR__ . "\\..\\..\\DB\\database.inc.php";
@@ -37,7 +37,7 @@ class ForumModel{
 
 
     public static function getThreadById($threadId){    //Should this get the entire thread or just the post and then another function for retriving the entire thread + comment section
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $query = "SELECT * from forum_threads where thread_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('s', $threadId);
@@ -54,7 +54,7 @@ class ForumModel{
 
         $UID = UserModel::getUsernameUID($userName);
 
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $stmt = $conn->prepare("SELECT * from forum_threads where author_id = ?");
         $stmt->bind_param('s', $UID);
         $stmt->execute();
@@ -76,7 +76,7 @@ class ForumModel{
     }
 
     public function create(){
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $query = "INSERT into forum_threads (thread_id, author_id, created_at, thread_title, thread_text_data, upvotes) values (?,?,?,?,?,?)";
         $stmt = $conn->prepare($query);
        
@@ -98,7 +98,7 @@ class ForumModel{
     public function delete($forumId =null){
 
         $forumId = $forumId ?? $this->threadID;
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $query = "DELETE forum_threads WHERE thread_id=?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('s', $forumId);
@@ -108,7 +108,7 @@ class ForumModel{
     }
 
     public function save(){
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $query = "UPDATE forum_threads SET thread_title = ?, thread_text_data = ?, upvotes = ? WHERE thread_id=?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("ssis",
