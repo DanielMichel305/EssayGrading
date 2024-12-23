@@ -2,7 +2,9 @@
     "name": "swe-project-team/essay-grading",
     "description": "Essay grading system for SWE Final Project",
     "type": "project",
-    "require": {},
+    "require": {
+        "bramus/router": "^1.6"
+    },
     "autoload": {
         "psr-4": {
             "App\\" : "app/"

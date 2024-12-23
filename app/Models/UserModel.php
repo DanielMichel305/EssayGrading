@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-
+use App\DB\DatabaseHandler;
 use mysqli_stmt;
 
 require __DIR__ . '\\..\\..\\DB\\database.inc.php';
@@ -14,6 +14,7 @@ class UserModel
     private $LastName;
     public $Username;
     private $Password;
+    private $userRole;
     private $Email;
     private $RegisteredAt;
     private $AccountStatus;
@@ -23,9 +24,19 @@ class UserModel
         $bytes = random_bytes(7);
         return bin2hex($bytes);
     }
+    public static function getUsernameUID($username){
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
+        $stmt=$conn->prepare('SELECT UID from users where Username = ?');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $UID = $stmt->get_result();
+        $UID = $UID->fetch_assoc();
+        $stmt->close();
+        return $UID["UID"];
+    }
 
     public function __construct($UID) {
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $this->UID = $UID;
         $query = "SELECT * from users WHERE UID = ?";
         $stmt = mysqli_prepare($conn, $query);
@@ -37,6 +48,7 @@ class UserModel
             $this->LastName = $userData['LastName'];
             $this->Username = $userData['Username'];
             $this->Password = $userData['Password'];
+            $this->userRole = $userData['role_id'];
             $this->Email = $userData['Email'];
             $this->RegisteredAt = $userData['RegisteredAt'];
             $this->AccountStatus = $userData['AccountStatus'];
@@ -50,7 +62,7 @@ class UserModel
     }
 
     public function delete($UID){
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $stmt = $conn->prepare("DELETE FROM users WHERE UID = ?");
         $stmt->bind_param('s', $this->UID);
         $stmt->execute();
@@ -59,13 +71,14 @@ class UserModel
 
     public function updateUserData($UserData){  //chech for data duplicates when updating data
 
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
+        //$originalUserModel = new UserModel($_SESSION["UID"]);   //USER MUST BE LOGGED IN //IGNORE THIS..PHP IS JS DRIVING ME CRAZY!
 
-        $FirstName = $UserData['FirstName'];
-        $LastName = $UserData['LastName'];
-        $Email = $UserData['Email'];
-        $Username = $UserData['Username'];
-        $Country = $UserData['Country'];
+        $FirstName = $UserData['FirstName'] ?? $this->FirstName;
+        $LastName = $UserData['LastName'] ?? $this->LastName;
+        $Email = $UserData['Email'] ?? $this->Email;
+        $Username = $UserData['Username'] ?? $this->Username;
+        $Country = $UserData['Country'] ?? $this->Country;
 
         $stmt = $conn->prepare("UPDATE users SET FirstName = ?, LastName = ?, Username = ?, Email = ?, Country = ? WHERE UID = ?");
         $stmt->bind_param('ssssss', $FirstName, $LastName, $Username,$Email, $Country, $this->UID);
@@ -76,7 +89,7 @@ class UserModel
 
     public static function signUp($UserData){
 
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
 
         //perform error handling and input sanitization
         $UID = UserModel::GenerateUID();
@@ -96,7 +109,7 @@ class UserModel
 
     }
     public static function login($UserName, $Password){
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $query = "SELECT * FROM users WHERE Username = ?";
         $stmt = mysqli_prepare($conn,$query);
         mysqli_stmt_bind_param($stmt, 's', $UserName);
@@ -110,8 +123,10 @@ class UserModel
         }
         else{
             throw new \Exception("Username and/or password are inccorect!");
+
         }
         mysqli_stmt_close($stmt);
+        return 0;
         
 
     }
@@ -133,7 +148,7 @@ class UserModel
     }
 
     public static function fetchUsers(){
-        global $conn;
+         $conn = DatabaseHandler::getDBInstance()->getConnectionInstance();;
         $sql = "SELECT * from users";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -148,7 +163,13 @@ class UserModel
         
     }
     
+    
+    public function getUserRole(){
+        return $this->userRole;
+    }
+    
 }
+
 
 
 ?>

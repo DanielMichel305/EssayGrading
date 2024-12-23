@@ -11,10 +11,10 @@
 
     <div class="sidebar">
         <ul>
-            <li><a href="home.php">Your dashboard</a></li>
-            <li><a href="certifications.php">Certifications</a></li>
+            <li><a href="/app/views/home.php">Your dashboard</a></li>
+            <li><a href="/app/views/certifications.php">Certifications</a></li>
             <li><a href="#">Your Progress</a></li>
-            <li><a href="discussion.php">Student Discussion</a></li>
+            <li><a href="/app/views/discussion.php">Student Discussion</a></li>
           
         </ul>
     </div>

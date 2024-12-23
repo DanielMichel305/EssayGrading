@@ -21,4 +21,5 @@ document.getElementById('downloadButton').onclick = function() {
         link.download = 'certificate.png';
         link.click();
     });
+    
 };

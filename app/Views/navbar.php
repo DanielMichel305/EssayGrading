@@ -14,10 +14,10 @@
         <nav>
         
             <ul>
-                <li><a href="MainPage.php">Home</a></li>
+                <li><a href="/app/views/MainPage.php">Home</a></li>
               
-                <li><a href="Login.php">Login</a></li>
-                <li><a href="Register.php">Signup</a></li>
+                <li><a href="/app/views/Login.php">Login</a></li>
+                <li><a href="/app/views/Register.php">Signup</a></li>
                 
             </ul>
             

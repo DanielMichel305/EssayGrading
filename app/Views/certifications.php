@@ -20,10 +20,10 @@ $currentDate = date("Y-m-d"); // Get current date for the certificate
 <?php include 'navbar.php';?>
 <div class="sidebar">
         <ul>
-            <li><a href="home.php">Your dashboard</a></li>
+            <li><a href="/app/views/home.php">Your dashboard</a></li>
             <li><a href="#">Certifications</a></li>
-            <li><a href="StudentProgress.php">Your Progress</a></li>
-            <li><a href="discussion.php">Student Discussion</a></li>
+            <li><a href="/app/views/StudentProgress.php">Your Progress</a></li>
+            <li><a href="/app/views/discussion.php">Student Discussion</a></li>
            
         </ul>
     </div>
