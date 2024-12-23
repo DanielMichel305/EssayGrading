@@ -6,8 +6,8 @@
     <title>AI-Powered Essay Grading System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/navbar.css">    
+    <link rel="stylesheet" href="../../public/css/home.css">
+    <link rel="stylesheet" href="../../public/css/navbar.css">    
 
 </head>
 <body>
@@ -159,7 +159,7 @@
 
 
     <!--<script src="home.js"></script>-->
-    <script src="/js/home.js"></script>
+    <script src="../../public/js/home.js"></script>
 
 </body>
 </html>
