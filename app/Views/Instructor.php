@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instructor Dashboard - EssayGrader</title>
-    <link rel="stylesheet" href="/css/instructor.css">
+    <link rel="stylesheet" href="../public/css/instructor.css">
 </head>
 <body>
     <?php include 'navbar.php'; ?>
+    
 
     <section class="instructor-dashboard">
         <h1>Instructor Dashboard</h1>
@@ -29,10 +30,10 @@
 
         <!-- Discussion Moderation Section -->
         <div class="section discussion-moderation">
-            <h2>Moderate Discussions</h2>
-            <p>View and moderate student discussions.</p>
-            <button class="cta">View Discussions</button>
-        </div>
+    <h2>Moderate Discussions</h2>
+    <p>View and moderate student discussions.</p>
+    <a href="discussion.php" class="cta">View Discussions</a>
+</div>
 
         <!-- Essay Guidance Section -->
         <div class="section essay-guidance">

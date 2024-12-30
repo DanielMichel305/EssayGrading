@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Powered Essay Grading System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="/css/navbar.css">   
+    <link rel="stylesheet" href="../public/css/navbar.css">   
 </head>
 <body>
 <header>
 <button id="sidebar-toggle" class="sidebar-toggle"><i class="fas fa-bars"></i></button>
-        <div class="logo">EssayGrader</div>
+        <div class="logo">GradeGenius</div>
         <nav>
         
             <ul>

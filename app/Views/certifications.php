@@ -11,9 +11,9 @@ $currentDate = date("Y-m-d"); // Get current date for the certificate
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Progress</title>
-    <link rel="stylesheet" href="/css/certifications.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/StudentProgress.css">
+    <link rel="stylesheet" href="../public/css/certifications.css">
+    <link rel="stylesheet" href="../public/css/navbar.css">
+    <link rel="stylesheet" href="../public/css/StudentProgress.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
@@ -68,6 +68,6 @@ $currentDate = date("Y-m-d"); // Get current date for the certificate
             });
         });
     </script>
-    <script src="/js/certifications.js"></script>
+    <script src="../public/js/certifications.js"></script>
     
 </html>
