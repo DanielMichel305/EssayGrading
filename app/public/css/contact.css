@@ -8,7 +8,7 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensures footer is at the bottom */
     font-family: 'Poppins', sans-serif;
     background-color: #121212;
     color: #ffffff;
@@ -17,30 +17,18 @@ body {
 
 /* Container Styles */
 .container {
-    max-width: 800px;
-    margin: 20px auto;
     padding: 50px 20px;
-    flex: 1;
+    flex: 1; /* Allows the container to grow and push footer down */
 }
 
 /* Headings */
 h1 {
     margin-bottom: 20px;
-    color: #9b59b6; /* Match heading color with theme */
 }
 
-/* Paragraphs */
+/* Content Styles */
 p {
-    margin-bottom: 15px;
-    color: #b0b0b0; /* Subtle gray for text */
-    font-size: 1rem;
-    line-height: 1.8;
-}
-
-/* Highlighted Sections */
-.highlight {
-    color: #9b59b6;
-    font-weight: bold;
+    margin-bottom: 15px; /* Space between paragraphs */
 }
 
 /* Footer Styles */
@@ -74,4 +62,3 @@ footer ul li a:hover {
 footer p {
     margin: 0; /* Remove bottom margin from the footer text */
 }
-

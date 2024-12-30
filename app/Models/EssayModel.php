@@ -21,7 +21,17 @@ class EssayModel {
 
     }
 
-    public function SaveEssayData(){
+
+    public function editEssayAttributes($essayData){
+        $this->EssayLanguage = $essayData["essayLanguage"] ?? $this->EssayLanguage;
+        $this->EssayScore = $essayData["essayScore"] ?? $this->EssayScore;
+        $this->plagirismScore = $essayData["plagirismScore"] ?? $this->plagirismScore;
+        $this->LetterGrade = $essayData["letterGrade"] ?? $this->LetterGrade;
+        $this->GradedBy = $essayData["gradedBy"] ?? $this->GradedBy;
+    }
+
+
+    public function create(){
         global $conn;
         $sql = "INSERT into essays (EssayId, EssayLanguage, StudentId, EssayScore, PlagirismScore, LetterGrade, GradedBy) VALUES (?,?,?,?,?,?,?)";
         if($stmt = $conn->prepare($sql)){
@@ -39,6 +49,57 @@ class EssayModel {
         }
      
     }
+
+
+    public function save(){ ////ERORRRR HANDLING
+        global $conn;
+        $query = "UPDATE essays WHERE EssayId = ? SET EssayLanguage = ?, EssayScore = ?, PlagirismScore = ?, LetterGrade = ?, GradedBy = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('ssiiss',
+            $this->EssayId,
+            $this->EssayLanguage,
+            $this->EssayScore,
+            $this->plagirismScore,
+            $this->LetterGrade,
+            $this->GradedBy
+        );
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
+
+    public static function getFilteredEssays($queryFilters){        /////DON'T Forget Error Handling
+        global $conn;
+        $query = "SELECT * FROM essays WHERE 1=1 ";
+        $filterTypes="";
+        $params = [];
+        if(isset($queryFilters["language"])){
+            $query .= " AND EssayLanguage = ?";
+            $filterTypes .= "s";
+            $params[] = $queryFilters["language"];
+        }
+        if(isset($queryFilters["uid"])){
+            $query .= " AND StudentId = ?";
+            $filterTypes .= "s";
+            $params[] = $queryFilters["uid"];
+        }
+        if(isset($queryFilters["grading-agent"])){
+            $query .= " AND GradedBy = ?";
+            $filterTypes .= "s";
+            $params[] = $queryFilters["grading-agent"];
+        }
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param($filterTypes, ...$params);
+
+        $stmt->execute();
+        $results = $stmt->get_result();
+        $essays = $results->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $essays;
+
+    }
+
 
 
     public static function FetchAllEssays(){
@@ -68,7 +129,7 @@ class EssayModel {
         $result = $stmt->get_result();
         $stmt->close();
         $row = $result->fetch_assoc();
-        return [
+        $essayData  = [
             "EssayId" => $row["EssayId"],
             "EssayLanguage" => $row["EssayLanguage"],
             "StudentId" => $row["StudentId"],
@@ -78,6 +139,7 @@ class EssayModel {
             "SubmittedAt" => $row["SubmittedAt"],
             "GradedBy" => $row["GradedBy"]
         ];
+        return new EssayModel($essayData, $EssayID);
         
 
     }
@@ -100,7 +162,7 @@ class EssayModel {
 
     }
 
-    public static function deleteEssay($EssayID){
+    public static function delete($EssayID){
         global $conn;
         $sql = "DELETE FROM essays Where EssayId = ?";
         $stmt = $conn->prepare($sql);
@@ -110,12 +172,12 @@ class EssayModel {
     }
 
 
-    public function __construct($EssayData)
+    public function __construct($EssayData, $essayId = null)           ///This is just a crude way to be able to return new EssayModel that already exists
     {
         //global $conn;
         $this->StudentId = $EssayData['StudentId'];
         $this->EssayLanguage = $EssayData['EssayLanguage'];
-        $this->EssayId = EssayModel::CreateEssayID($this->StudentId, $this->EssayLanguage);
+        $this->EssayId = $essayId ?? EssayModel::CreateEssayID($this->StudentId, $this->EssayLanguage);
         $this->EssayScore = $EssayData['EssayScore'];
         $this->plagirismScore = $EssayData['PlagirismScore'];
         $this->LetterGrade = $EssayData['LetterGrade'];

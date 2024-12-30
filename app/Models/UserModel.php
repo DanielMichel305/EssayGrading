@@ -23,6 +23,16 @@ class UserModel
         $bytes = random_bytes(7);
         return bin2hex($bytes);
     }
+    public static function getUsernameUID($username){
+        global $conn;
+        $stmt=$conn->prepare('SELECT UID from users where Username = ?');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $UID = $stmt->get_result();
+        $UID = $UID->fetch_assoc();
+        $stmt->close();
+        return $UID["UID"];
+    }
 
     public function __construct($UID) {
         global $conn;
@@ -60,12 +70,13 @@ class UserModel
     public function updateUserData($UserData){  //chech for data duplicates when updating data
 
         global $conn;
+        //$originalUserModel = new UserModel($_SESSION["UID"]);   //USER MUST BE LOGGED IN //IGNORE THIS..PHP IS JS DRIVING ME CRAZY!
 
-        $FirstName = $UserData['FirstName'];
-        $LastName = $UserData['LastName'];
-        $Email = $UserData['Email'];
-        $Username = $UserData['Username'];
-        $Country = $UserData['Country'];
+        $FirstName = $UserData['FirstName'] ?? $this->FirstName;
+        $LastName = $UserData['LastName'] ?? $this->LastName;
+        $Email = $UserData['Email'] ?? $this->Email;
+        $Username = $UserData['Username'] ?? $this->Username;
+        $Country = $UserData['Country'] ?? $this->Country;
 
         $stmt = $conn->prepare("UPDATE users SET FirstName = ?, LastName = ?, Username = ?, Email = ?, Country = ? WHERE UID = ?");
         $stmt->bind_param('ssssss', $FirstName, $LastName, $Username,$Email, $Country, $this->UID);
@@ -110,8 +121,10 @@ class UserModel
         }
         else{
             throw new \Exception("Username and/or password are inccorect!");
+
         }
         mysqli_stmt_close($stmt);
+        return 0;
         
 
     }
